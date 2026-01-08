@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Good morning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Separate audio tracks -->
+  <audio id="goodmorningAudio" preload="auto">
+    <source src="audio/goodmorning.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="shes22Audio" preload="auto">
+    <source src="audio/shes22.mp3" type="audio/mpeg">
+  </audio>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-text">
+          <h1>good morning! i am 22 years old today</h1>
+          <p class="sub">and i have something i&apos;d like to say (but i havent been practicing all day)</p>
+        </div>
+
+        <!-- Smiley button plays goodmorning.mp3 -->
+        <button class="icon-btn" id="smileyBtn" type="button" aria-label="Play good morning audio">
+          <img src="images/smiley.png" alt="Click me (+ slight volume up)">
+        </button>
+      </div>
+
+      <img
+        src="images/fireworks.gif"
+        alt="Fireworks"
+        class="fireworks">
+    </div>
+  </header>
+
+
+
+    <main class="content">
+    <div class="message-row">
+      <!-- Star button plays shes22.mp3 -->
+      <button class="icon-btn star-btn" id="starBtn" type="button" aria-label="Play she is 22 audio">
+        <img src="images/star.png" alt="now click me!">
+      </button>
+
+      <div class="message">
+        <p>i would greatly appreciate it if people could stop by 8 school street on thursday 1/8/25 between 6 and 9pm and say hello!</p>
+        <p>you might have to climb a slight snowbank</p>
+        <p>but if you make the trek i will provide warm tea and assorted sustenance (possibly pasta and cheese)</p>
+        <p>and if you're feeling so inspired perhaps you will pull a prank (they provide such good cheer) </p>
+      </div>
+    </div>
+    <section class="closing-note">
+        <p>anyways...i hope you can make it love you all and happy happy winter!</p>
+    </section>
+
+    <section class="card">
+
+      <div class="images">
+        <figure>
+          <img src="images/tea.webp" alt="Tea">
+        <figcaption>cozy ʕ·͡ᴥ·ʔ</figcaption>
+
+        </figure>
+
+        <figure>
+          <img src="images/pasta.jpeg" alt="Pasta">
+        <figcaption>i will add sauce to my hypothetical pasta dw</figcaption>
+
+        </figure>
+
+        <figure>
+          <img src="images/weirdcheeseppl.avif" alt="Cheese">
+            <figcaption>soon to be us ☜(⌒▽⌒)☞</figcaption>
+
+        </figure>
+      </div>
+
+      <script>
+  const goodmorning = document.getElementById("goodmorningAudio");
+  const shes22 = document.getElementById("shes22Audio");
+
+  const smileyBtn = document.getElementById("smileyBtn");
+  const starBtn = document.getElementById("starBtn");
+
+  function stopAll() {
+    [goodmorning, shes22].forEach(a => {
+      a.pause();
+      a.currentTime = 0;
+    });
+  }
+
+  async function play(audioEl) {
+    stopAll();
+    try {
+      await audioEl.play();
+    } catch (e) {
+      // If blocked for any reason, user can click again.
+      console.log(e);
+    }
+  }
+
+  smileyBtn.addEventListener("click", () => play(goodmorning));
+  starBtn.addEventListener("click", () => play(shes22));
+</script>
+
+
+    </section>
+  </main>
+
+  <script>
+    const audio = document.getElementById("song");
+    const btn = document.getElementById("startAudio");
+
+    let started = false;
+
+    async function startSong() {
+      if (started) return;
+      started = true;
+      try {
+        await audio.play();
+        btn.textContent = "song playing";
+        btn.disabled = true;
+      } catch (e) {
+        // If the browser blocks it, the button remains available.
+        started = false;
+      }
+    }
+
+    document.addEventListener("click", startSong, { once: true });
+    btn.addEventListener("click", startSong);
+  </script>
+</body>
+</html>

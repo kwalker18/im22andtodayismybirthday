@@ -1,0 +1,216 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111;
+
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.site-header {
+  padding: 34px 20px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-text {
+  max-width: 70%;
+}
+
+.fireworks {
+  width: 250px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.site-header h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  letter-spacing: 0.2px;
+}
+
+.sub {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.content {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 20px 70px;
+}
+
+.card {
+  border: 1px solid #e9e9e9;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #ededed;
+  background: #fff;
+}
+
+img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+figcaption {
+  padding: 10px 12px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.message p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.start {
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.start:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.hint {
+  margin: 10px 0 0;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.icon-btn img {
+  display: block;
+  width: 140px;
+  height: auto;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.star-btn img {
+  width: 300px;
+}
+
+@media (max-width: 640px) {
+  .header-left {
+    flex-wrap: wrap;
+  }
+
+  .icon-btn img {
+    width: 500px;
+  }
+
+  .message-row {
+    flex-direction: column;
+  }
+
+  .star-btn img {
+    width: 200px;
+  }
+}
+/* Interactive icon polish */
+.icon-btn img {
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+/* Hover: lift + gentle glow */
+.icon-btn:hover img {
+  transform: translateY(-2px) scale(1.03);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
+}
+
+/* Active (click): press */
+.icon-btn:active img {
+  transform: translateY(0) scale(0.98);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Optional: cursor hint */
+.icon-btn {
+  cursor: pointer;
+}
+/* Periwinkle background for star + message section */
+.message-row {
+  background: rgba(190, 198, 255, 0.78); /* periwinkle */
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(3px);
+}
+/* Make smiley face bigger */
+#smileyBtn img {
+  width: 400px;
+}
+
+/* Closing dusky blue note */
+.closing-note {
+  margin-top: 32px;
+  padding: 22px 26px;
+  background: rgba(90, 105, 165, 0.78); /* dusky blue */
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.closing-note p {
+  margin: 0;
+  font-size: 20px; /* larger than body text */
+  line-height: 1.5;
+  color: #ffffff;
+}
